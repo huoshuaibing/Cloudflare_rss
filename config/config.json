@@ -1,0 +1,11 @@
+{
+  "target":[
+    {
+      "name": "cloudflare",
+      "url": "https://www.cloudflarestatus.com/history.atom",
+      "interval": 300
+    }
+  ],
+  "dingtalk": "https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxx",
+  "heartbeat": "https://heartbeat-hk.blockin.com/v2/xxxx/ping"
+}

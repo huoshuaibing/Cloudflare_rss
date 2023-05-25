@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cloudflarerss
+  labels:
+    app: cloudflarerss
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cloudflarerss
+    spec:
+      # restartPolicy: Never
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: cloudflarerss
+        imagePullPolicy: Always
+        image: registry.cn-hongkong.aliyuncs.com/poolin/cloudflare_rss:1.0
+        resources:
+          requests:
+            memory: 50M
+            cpu: 0.1
+          limits:
+            memory: 2G
+            cpu: 1
+        volumeMounts:
+        - name: cloudflare-conf
+          mountPath: /work/config
+      volumes:
+      - name: cloudflare-conf
+        secret:
+          secretName: cloudflare-conf
+          items:
+          - key: config.json
+            path: config.json
+        #tty: true
+        #stdin: true
+        #stdinOnce: true
+      imagePullSecrets:
+        - name: registrykey-u-p
