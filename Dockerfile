@@ -1,12 +1,13 @@
-FROM golang:1.19-alpine as builder
-RUN apt-get update && apt-get install -y \
-                                 autoconf \
-                                 automake \
-                                 libtool \
-                                 curl \
-                                 make\
-                                 g++ \
-                                 unzip
+FROM golang:1.19-alpine AS builder
+RUN apk add --no-cache \
+    autoconf \
+    automake \
+    libtool \
+    curl \
+    make \
+    g++ \
+    unzip
+
 ARG CACHEBUST
 RUN mkdir -p $GOPATH/src/github.com/iblockin/CloudFlare_rss
 RUN mkdir -p /work/build
