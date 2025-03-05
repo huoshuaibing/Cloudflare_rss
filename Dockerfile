@@ -13,6 +13,9 @@ RUN mkdir -p $GOPATH/src/github.com/iblockin/CloudFlare_rss
 RUN mkdir -p /work/build
 WORKDIR $GOPATH/src/github.com/iblockin/CloudFlare_rss
 COPY . $GOPATH/src/github.com/iblockin/CloudFlare_rss/
+
+ENV GO111MODULE=on
+
 RUN go get github.com/lunny/html2md
 RUN go get github.com/mmcdole/gofeed
 WORKDIR $GOPATH/src/github.com/iblockin/CloudFlare_rss/cmd/
