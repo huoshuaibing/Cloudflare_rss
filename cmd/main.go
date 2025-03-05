@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/iblockin/CloudFlare_rss/config"
-	"github.com/iblockin/CloudFlare_rss/feed"
-	"github.com/iblockin/CloudFlare_rss/robot"
+	"Cloudflare_rss/config"
+	"Cloudflare_rss/feed"
+	"Cloudflare_rss/robot"
 )
 
 // todo : 使用raii技术

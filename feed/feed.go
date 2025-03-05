@@ -3,7 +3,7 @@ package feed
 import (
 	"log"
 
-	"github.com/iblockin/CloudFlare_rss/robot"
+	"Cloudflare_rss/robot"
 
 	"github.com/lunny/html2md"
 
