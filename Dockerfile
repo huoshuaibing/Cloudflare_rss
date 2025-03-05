@@ -22,7 +22,8 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN go build -o /app/CloudFlare_rss ./cmd/
+WORKDIR /app/cmd/
+RUN go build -o /app/CloudFlare_rss
 
 FROM alpine:latest
 ARG CACHEBUST
