@@ -22,12 +22,12 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN go build -o /work/CloudFlare_rss ./cmd/
+RUN go build -o /app/build/CloudFlare_rss ./cmd/
 
 FROM alpine:latest
 ARG CACHEBUST
 RUN apk update && apk --no-cache add ca-certificates
 WORKDIR /work
-COPY --from=builder /work/build .
+COPY --from=builder /app/build/CloudFlare_rss .
 RUN chmod +x /work/CloudFlare_rss
 CMD [ "/work/CloudFlare_rss" ]
