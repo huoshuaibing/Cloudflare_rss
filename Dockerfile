@@ -18,12 +18,15 @@ ENV GO111MODULE=on \
 
 WORKDIR /app
 
-COPY go.mod go.sum ./
-RUN go mod download
-
 COPY . .
+
+RUN go mod download && go mod verify
+
 WORKDIR /app/cmd/
-RUN go build -o /app/CloudFlare_rss
+
+RUN ls -l /app && ls -l /app/cmd
+
+RUN go build -v -o /app/CloudFlare_rss
 
 FROM alpine:latest
 ARG CACHEBUST
